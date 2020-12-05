@@ -11,14 +11,12 @@ namespace EFSamples.Data.Builders
 
         public SubjectBuilder WithId(Guid id)
         {
-            _subject.Id = id;
-            return this;
+            return Set(x => x.Id, id);
         }
 
-        public SubjectBuilder TaughtBy(Person user)
+        public SubjectBuilder IsTaughtBy(Person person)
         {
-            _subject.TaughtBy = user;
-            return this;
+            return Set(x => x.TaughtBy, person);
         }
     }
 }

@@ -3,9 +3,8 @@ using EFSamples.Tests.Helpers;
 using Microsoft.EntityFrameworkCore;
 using Shouldly;
 using System.Threading.Tasks;
-using static EFSamples.Tests.Data.ObjectMother;
 
-namespace EFSamples.Tests.Users
+namespace EFSamples.Tests.People
 {
     public class CanCreateAPerson : TestBase
     {
@@ -18,7 +17,7 @@ namespace EFSamples.Tests.Users
 
         public void GivenAUserNamedJoe()
         {
-            _user = People.Joe;
+            _user = Data.ObjectMother.People.Joe;
         }
         public async Task WhenJoeIsAddedToTheDatabase()
         {
@@ -26,9 +25,9 @@ namespace EFSamples.Tests.Users
             await _container.Db.SaveChangesAsync();
         }
 
-        public void ThenJoeExistsInTheDatabase()
+        public async Task ThenJoeExistsInTheDatabase()
         {
-            var user = _container.Db.Users.FirstAsync(x => x.Id == _user.Id);
+            var user = await _container.Db.Users.FirstAsync(x => x.Id == _user.Id);
             user.ShouldNotBeNull();
         }
     }
