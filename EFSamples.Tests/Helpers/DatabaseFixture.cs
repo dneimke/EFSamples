@@ -26,7 +26,7 @@ namespace EFSamples.Tests.Helpers
             dbContext.Database.Migrate();
         }
 
-        public static SampleDbContext GetDbContext()
+        private static SampleDbContext GetDbContext()
         {
             var connectionString = ConnectionString;
 

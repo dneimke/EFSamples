@@ -2,13 +2,15 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
+using System.Threading.Tasks;
 
 namespace EFSamples.Tests.Helpers
 {
-    public class ContainerFixture : IDisposable
+    public class ContainerFixture : IAsyncDisposable
     {
         private readonly IServiceProvider _serviceProvider;
         private readonly ServiceCollection _services;
+        private readonly DatabaseFixture _database;
 
         public T GetService<T>() => _serviceProvider.GetService<T>();
         public SampleDbContext Db => GetService<SampleDbContext>();
@@ -19,18 +21,18 @@ namespace EFSamples.Tests.Helpers
 
             var builder = new ConfigurationBuilder()
                 .AddJsonFile("appsettings.json", optional: true);
-
-            var configuration = builder.Build();
-
-            _services.AddScoped<IConfiguration>(p => configuration);
-            _services.AddScoped(p => DatabaseFixture.GetDbContext());
+            _services.AddScoped<IConfiguration>(p => builder.Build());
+            
+            _database = new DatabaseFixture();
+            _services.AddScoped(p => _database.DbContext);
 
             _serviceProvider = _services.BuildServiceProvider();
         }
 
-        public void Dispose()
+        public async ValueTask DisposeAsync()
         {
-            // clean-up
+            await _database.ResetAsync();
+            _database.Dispose();
         }
     }
 }

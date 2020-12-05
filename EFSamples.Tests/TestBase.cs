@@ -8,15 +8,13 @@ using Xunit;
 namespace EFSamples.Tests
 {
     [Collection("Sequential")]
-    public class TestBase : IAsyncLifetime, IClassFixture<ContainerFixture>, IClassFixture<DatabaseFixture>
+    public class TestBase : IAsyncLifetime, IClassFixture<ContainerFixture>
     {
         protected readonly ContainerFixture _container;
-        private DatabaseFixture _database;
-
-        public TestBase(ContainerFixture fixture, DatabaseFixture database)
+       
+        public TestBase(ContainerFixture fixture)
         {
             _container = fixture;
-            _database = database;
         }
 
         [Fact]
@@ -24,15 +22,12 @@ namespace EFSamples.Tests
 
         public Task InitializeAsync()
         {
-            _database = new DatabaseFixture();
             return Task.CompletedTask;
         }
 
         public async Task DisposeAsync()
         {
-            _container.Dispose();
-            await _database.ResetAsync();
-            _database.Dispose();
+            await _container.DisposeAsync();
         }
     }
 }

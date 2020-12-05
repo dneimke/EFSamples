@@ -10,7 +10,7 @@ namespace EFSamples.Tests.People
     {
         Person _user;
 
-        public CanCreateAPerson(ContainerFixture fixture, DatabaseFixture database) : base(fixture, database)
+        public CanCreateAPerson(ContainerFixture fixture) : base(fixture)
         {
 
         }

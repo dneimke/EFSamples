@@ -12,7 +12,7 @@ namespace EFSamples.Tests.Subjects
         Subject _result;
         Person _joe;
 
-        public CanCreateASubject(ContainerFixture fixture, DatabaseFixture database) : base(fixture, database)
+        public CanCreateASubject(ContainerFixture fixture) : base(fixture)
         {
             _joe = Data.ObjectMother.People.Joe.Build();
         }
