@@ -9,22 +9,17 @@ namespace EFSamples.Data.Builders
     {
         private readonly List<Subject> _subjects = new();
 
-        public PersonBuilder() => Set(x => x.Id, Guid.NewGuid());
+        public PersonBuilder() 
+            => Set(x => x.Id, Guid.NewGuid());
 
-        public PersonBuilder WithId(Guid id)
-        {
-            return Set(x => x.Id, id);
-        }
+        public PersonBuilder WithId(Guid id) 
+            => Set(x => x.Id, id);
 
-        public PersonBuilder WithName(string name)
-        {
-            return Set(x => x.Name, name);
-        }
+        public PersonBuilder WithName(string name) 
+            => Set(x => x.Name, name);
 
         public PersonBuilder WithEmailAddress(string emailAddress)
-        {
-            return Set(x => x.Email, emailAddress);
-        }
+            => Set(x => x.Email, emailAddress);
 
         public PersonBuilder EnrolledIn(params Subject[] subjects)
         {
