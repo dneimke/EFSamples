@@ -1,6 +1,6 @@
 # EntityFramework Examples
 
-![Build and test](https://github.com/dneimke/EFSamples/workflows/Builds%20EF%20Examples%20and%20runs%20tests/badge.svg)
+![Build EF Examples and run tests](https://github.com/dneimke/EFSamples/workflows/Builds%20EF%20Examples%20and%20runs%20tests/badge.svg)
 
 A repo to play around with Entity Framework code and store examples of how to perform common tasks.
 
