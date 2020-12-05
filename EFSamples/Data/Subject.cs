@@ -11,6 +11,6 @@ namespace EFSamples.Data
         [Required]
         public Person TaughtBy { get; set; }
 
-        public List<Person> Participants { get; set; } = new();
+        public List<Person> Students { get; set; } = new();
     }
 }

@@ -15,7 +15,7 @@ namespace EFSamples.Data.Builders
             return this;
         }
 
-        public SubjectBuilder CreatedBy(Person user)
+        public SubjectBuilder TaughtBy(Person user)
         {
             _subject.TaughtBy = user;
             return this;

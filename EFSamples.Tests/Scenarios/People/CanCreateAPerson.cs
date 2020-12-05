@@ -7,11 +7,11 @@ using static EFSamples.Tests.Data.ObjectMother;
 
 namespace EFSamples.Tests.Users
 {
-    public class CanCreateUsers : TestBase
+    public class CanCreateAPerson : TestBase
     {
         Person _user;
 
-        public CanCreateUsers(ContainerFixture fixture, DatabaseFixture database) : base(fixture, database)
+        public CanCreateAPerson(ContainerFixture fixture, DatabaseFixture database) : base(fixture, database)
         {
 
         }

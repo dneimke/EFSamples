@@ -13,7 +13,7 @@ namespace EFSamples.Data.Configurations
                 .WithMany()
                 .OnDelete(DeleteBehavior.Restrict);
 
-            builder.HasMany(x => x.Participants)
+            builder.HasMany(x => x.Students)
               .WithMany(x => x.EnrolledSubjects);
         }
     }

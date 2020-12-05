@@ -63,12 +63,12 @@ namespace EFSamples.Migrations
                     b.Property<Guid>("EnrolledSubjectsId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("ParticipantsId")
+                    b.Property<Guid>("StudentsId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.HasKey("EnrolledSubjectsId", "ParticipantsId");
+                    b.HasKey("EnrolledSubjectsId", "StudentsId");
 
-                    b.HasIndex("ParticipantsId");
+                    b.HasIndex("StudentsId");
 
                     b.ToTable("PersonSubject");
                 });
@@ -94,7 +94,7 @@ namespace EFSamples.Migrations
 
                     b.HasOne("EFSamples.Data.Person", null)
                         .WithMany()
-                        .HasForeignKey("ParticipantsId")
+                        .HasForeignKey("StudentsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

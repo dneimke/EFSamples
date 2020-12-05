@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace EFSamples.Migrations
 {
-    public partial class InitialMigration : Migration
+    public partial class AddsPersonAndSubject : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -43,14 +43,14 @@ namespace EFSamples.Migrations
                 columns: table => new
                 {
                     EnrolledSubjectsId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    ParticipantsId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    StudentsId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_PersonSubject", x => new { x.EnrolledSubjectsId, x.ParticipantsId });
+                    table.PrimaryKey("PK_PersonSubject", x => new { x.EnrolledSubjectsId, x.StudentsId });
                     table.ForeignKey(
-                        name: "FK_PersonSubject_Person_ParticipantsId",
-                        column: x => x.ParticipantsId,
+                        name: "FK_PersonSubject_Person_StudentsId",
+                        column: x => x.StudentsId,
                         principalTable: "Person",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -69,9 +69,9 @@ namespace EFSamples.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_PersonSubject_ParticipantsId",
+                name: "IX_PersonSubject_StudentsId",
                 table: "PersonSubject",
-                column: "ParticipantsId");
+                column: "StudentsId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Subject_TaughtById",

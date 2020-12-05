@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EFSamples.Migrations
 {
     [DbContext(typeof(SampleDbContext))]
-    [Migration("20201205085116_InitialMigration")]
-    partial class InitialMigration
+    [Migration("20201205093317_Adds-PersonAndSubject")]
+    partial class AddsPersonAndSubject
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -65,12 +65,12 @@ namespace EFSamples.Migrations
                     b.Property<Guid>("EnrolledSubjectsId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("ParticipantsId")
+                    b.Property<Guid>("StudentsId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.HasKey("EnrolledSubjectsId", "ParticipantsId");
+                    b.HasKey("EnrolledSubjectsId", "StudentsId");
 
-                    b.HasIndex("ParticipantsId");
+                    b.HasIndex("StudentsId");
 
                     b.ToTable("PersonSubject");
                 });
@@ -96,7 +96,7 @@ namespace EFSamples.Migrations
 
                     b.HasOne("EFSamples.Data.Person", null)
                         .WithMany()
-                        .HasForeignKey("ParticipantsId")
+                        .HasForeignKey("StudentsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
