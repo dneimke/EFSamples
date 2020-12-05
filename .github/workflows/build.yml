@@ -23,4 +23,4 @@ jobs:
       run: dotnet build --configuration Release
 
     - name: Run tests
-      run: dotnet test --no-restore --no-build --configuration $config
+      run: dotnet test --no-restore --no-build
