@@ -7,7 +7,7 @@ namespace EFSamples.Tests
     {
         bool isExecuted = false;
 
-        public Canary(ContainerFixture fixture) : base(fixture)
+        public Canary(ContainerFixture container) : base(container)
         {
 
         }

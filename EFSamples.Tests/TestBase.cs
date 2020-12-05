@@ -11,23 +11,14 @@ namespace EFSamples.Tests
     public class TestBase : IAsyncLifetime, IClassFixture<ContainerFixture>
     {
         protected readonly ContainerFixture _container;
-       
-        public TestBase(ContainerFixture fixture)
-        {
-            _container = fixture;
-        }
+
+        public TestBase(ContainerFixture container) => _container = container;
 
         [Fact]
         public virtual void ExecuteScenario() => this.BDDfy(GetType().Name);
 
-        public Task InitializeAsync()
-        {
-            return Task.CompletedTask;
-        }
+        public Task InitializeAsync() => Task.CompletedTask;
 
-        public async Task DisposeAsync()
-        {
-            await _container.DisposeAsync();
-        }
+        public async Task DisposeAsync() => await _container.DisposeAsync();
     }
 }
