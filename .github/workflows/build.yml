@@ -1,4 +1,4 @@
-name: Builds EF Examples and runs tests
+name: Build EF Examples and run tests
 
 on:
   push:
