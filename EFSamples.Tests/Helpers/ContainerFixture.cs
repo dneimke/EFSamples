@@ -3,10 +3,11 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Threading.Tasks;
+using Xunit;
 
 namespace EFSamples.Tests.Helpers
 {
-    public class ContainerFixture : IAsyncDisposable
+    public class ContainerFixture : IAsyncLifetime
     {
         private readonly IServiceProvider _serviceProvider;
         private readonly ServiceCollection _services;
@@ -29,7 +30,9 @@ namespace EFSamples.Tests.Helpers
             _serviceProvider = _services.BuildServiceProvider();
         }
 
-        public async ValueTask DisposeAsync()
+        public Task InitializeAsync() => Task.CompletedTask;
+
+        public async Task DisposeAsync()
         {
             await _database.ResetAsync();
             _database.Dispose();
